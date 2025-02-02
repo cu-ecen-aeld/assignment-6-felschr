@@ -8,7 +8,7 @@ SRC_URI = "git://git@github.com/cu-ecen-aeld/assignments-3-and-later-felschr.git
 
 PV = "1.0+git${SRCPV}"
 # TODO: set to reference a specific commit hash in your assignment repo
-SRCREV = "bb54e8f50edf4c7387f9f52040dc2835fa12b244"
+SRCREV = "1d5e4bf2c280edeef97c600e067a1d9eecb8e842"
 
 # This sets your staging directory based on WORKDIR, where WORKDIR is defined at 
 # https://docs.yoctoproject.org/ref-manual/variables.html?highlight=workdir#term-WORKDIR
@@ -23,9 +23,8 @@ FILES:${PN} += "${sysconfdir}/init.d/aesdsocket-start-stop"
 # TODO: customize these as necessary for any libraries you need for your application
 # (and remove comment)
 TARGET_LDFLAGS += "-pthread -lrt"
-INSANE_SKIP:${PN} += "ldflags"
-INITSCRIPT_PACKAGES = "${PN}"
-INITSCRIPT_NAME:${PN} = "aesdsocket-start-stop"
+INITSCRIPT_NAME = "aesdsocket-start-stop"
+INITSCRIPT_PARAMS = "defaults 99"
 
 inherit update-rc.d
 
